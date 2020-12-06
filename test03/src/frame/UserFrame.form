@@ -7,12 +7,6 @@
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="da63e" layout-manager="BorderLayout" hgap="0" vgap="0">
-        <constraints border-constraint="North"/>
-        <properties/>
-        <border type="none"/>
-        <children/>
-      </grid>
       <tabbedpane id="3288a" binding="tabbedPane">
         <constraints border-constraint="Center"/>
         <properties/>
@@ -229,10 +223,47 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="f4dbe" class="javax.swing.JTable" binding="table">
+              <grid id="e91ce" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="10" left="70" bottom="20" right="70"/>
+                <constraints border-constraint="South"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="b2af2" class="javax.swing.JButton" binding="confirm">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <actionCommand value="删除"/>
+                      <font size="14" style="0"/>
+                      <horizontalTextPosition value="0"/>
+                      <label value="删除"/>
+                      <text value="删除"/>
+                    </properties>
+                  </component>
+                  <component id="c8cd0" class="javax.swing.JButton" binding="quite">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="14" style="0"/>
+                      <label value="取消"/>
+                      <text value="取消"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <scrollpane id="4b6f3">
                 <constraints border-constraint="Center"/>
                 <properties/>
-              </component>
+                <border type="none"/>
+                <children>
+                  <component id="8589b" class="javax.swing.JTable" binding="table1" default-binding="true">
+                    <constraints/>
+                    <properties/>
+                  </component>
+                </children>
+              </scrollpane>
             </children>
           </grid>
         </children>

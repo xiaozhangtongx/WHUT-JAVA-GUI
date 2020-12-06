@@ -14,7 +14,7 @@ import java.sql.SQLException;
  * @author zhang
  * @version 1.0
  * 2020/12/2 10:57
- * @Todo: $
+ * @Todo: 修改密码实现
  */
 public class SelfPassFrame extends JFrame {
     public JPanel panel1;
@@ -27,7 +27,7 @@ public class SelfPassFrame extends JFrame {
     private String newpassword;
     private String confirmpassword;
 
-    public SelfPassFrame(AbstractUser user,JFrame jFrame) {
+    public SelfPassFrame(AbstractUser user, JFrame jFrame) {
 
         确定Button.addActionListener(new ActionListener() {
             @Override
@@ -38,16 +38,11 @@ public class SelfPassFrame extends JFrame {
                         if (user.changeSelfInfo(newpassword)) {
                             MainGUI.showMessage(SelfPassFrame.this, "密码修改成功！", "提示!");
                             jFrame.dispose();
-                            JFrame frame = new JFrame("登录");
-                            frame.setContentPane(new LoginFrame(frame).contentpanel);
-                            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                            frame.pack();
-                            frame.setLocation(500,200);
-                            frame.setResizable(false);
-                            frame.setVisible(true);
+                            MainGUI.menu();
                         } else {
                             MainGUI.showMessage(SelfPassFrame.this, "密码修改失败！", "提示!");
                             jFrame.dispose();
+                            LoginFrame.showMainFrame(user, jFrame);
                         }
                     } catch (SQLException ex) {
 //                        ex.printStackTrace();
@@ -61,7 +56,8 @@ public class SelfPassFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dispose();
 //                SelfPassFrame.this.dispose();
-              jFrame.dispose();
+                jFrame.dispose();
+                LoginFrame.showMainFrame(user, jFrame);
 //              SelfPassFrame.this.setVisible(false);
 //              System.exit(0);
             }
@@ -69,7 +65,7 @@ public class SelfPassFrame extends JFrame {
     }
 
 
-//    public static void main(String[] args) {
+    //       public static void main(String[] args) {
 //        JFrame frame = new JFrame("修改密码");
 //        frame.setContentPane(new SelfPassFrame().panel1);
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -78,6 +74,7 @@ public class SelfPassFrame extends JFrame {
 //        frame.setVisible(true);
 //    }
 
+    //修改密码输入判断
     private boolean checkInput(AbstractUser user) {
         oldpassword = String.valueOf(oldpasswordText.getPassword()).trim();
         newpassword = String.valueOf(newpasswordText.getPassword()).trim();

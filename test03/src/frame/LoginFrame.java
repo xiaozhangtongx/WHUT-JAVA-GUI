@@ -13,7 +13,7 @@ import java.sql.SQLException;
  * @author zhang
  * @version 1.0
  * 2020/12/2 9:21
- * @Todo: $
+ * @Todo: 登录实现
  */
 
 public class LoginFrame extends JFrame {
@@ -52,7 +52,8 @@ public class LoginFrame extends JFrame {
                     } else {
                         jFrame.dispose();
 //                       setVisible(false);
-                        showMainFrame(user,jFrame);
+                        showMainFrame(user, jFrame);
+
                     }
                 }
 //                checkInput();
@@ -80,12 +81,12 @@ public class LoginFrame extends JFrame {
             psdUser.requestFocus();
             return false;
         }
-
         return true;
     }
 
-    private void showMainFrame(AbstractUser user,JFrame jFrame) {
-        MainFrame frame = new MainFrame(user,jFrame);
+    //显示主界面
+    public static void showMainFrame(AbstractUser user, JFrame jFrame) {
+        MainFrame frame = new MainFrame(user, jFrame);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(200, 200, 500, 400);
 //        frame.pack();
